@@ -1,6 +1,7 @@
 # Whitespace a11ystack for Wordpress
 
-Wordpress plugin that adds a11ystack-specific enhancements and features to Wordpress.
+Wordpress plugin that adds a11ystack-specific enhancements and features to
+Wordpress.
 
 ## How to install
 
