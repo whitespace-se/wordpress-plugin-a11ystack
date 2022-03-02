@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Whitespace a11ystack integration 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wordpress-plugin-"
 "a11ystack\n"
-"POT-Creation-Date: 2022-03-02T14:24:13+00:00\n"
-"PO-Revision-Date: 2022-03-02 15:26+0100\n"
+"POT-Creation-Date: 2022-03-02T15:53:57+00:00\n"
+"PO-Revision-Date: 2022-03-02 16:54+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -21,13 +21,10 @@ msgstr ""
 msgid "Whitespace a11ystack integration"
 msgstr ""
 
-#. Plugin URI of the plugin
-msgid "-"
-msgstr ""
-
 #. Description of the plugin
 msgid "Adds a11ystack-specific enhancements and features to Wordpress"
 msgstr ""
+"Lägger till a11ystack-specifika förbättringar och funktioner till Wordpress"
 
 #. Author of the plugin
 msgid "Whitespace"
@@ -39,7 +36,7 @@ msgstr ""
 
 #: autoload/acf-open-graph-fields.php:6
 msgid "Social media"
-msgstr "Social media"
+msgstr "Sociala medier"
 
 #: autoload/acf-open-graph-fields.php:10
 msgid "Title"

@@ -9,17 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-03-02T14:24:13+00:00\n"
+"POT-Creation-Date: 2022-03-02T15:53:57+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: whitespace-a11ystack\n"
 
 #. Plugin Name of the plugin
 msgid "Whitespace a11ystack integration"
-msgstr ""
-
-#. Plugin URI of the plugin
-msgid "-"
 msgstr ""
 
 #. Description of the plugin
