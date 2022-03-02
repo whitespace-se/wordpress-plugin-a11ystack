@@ -1,6 +1,6 @@
 <?php
 
-if (function_exists("acf_add_local_field_group")) {
+add_action('acf/init', function() {
   acf_add_local_field_group([
     "key" => "group_open_graph",
     "title" => __("Social media", "whitespace-a11ystack"),
@@ -86,4 +86,4 @@ if (function_exists("acf_add_local_field_group")) {
     "show_in_graphql" => 1,
     "graphql_field_name" => "openGraph",
   ]);
-}
+});
