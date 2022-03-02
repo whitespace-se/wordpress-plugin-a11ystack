@@ -27,3 +27,11 @@ Then get the plugin via composer:
 ```bash
 composer require whitespace-se/wordpress-plugin-a11ystack
 ```
+
+## Contributing
+
+Generate new pot file with this command:
+
+```
+wp i18n make-pot . --exclude=vendor,wp-content,node_modules languages/whitespace-a11ystack.pot
+```
