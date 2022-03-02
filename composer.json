@@ -12,10 +12,25 @@
       "email": "code@whitespace.se"
     }
   ],
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  },
+  "minimum-stability": "dev",
   "prefer-stable": true,
   "autoload": {
     "psr-4": {
       "Whitespace\\A11ystack\\": "src/"
     }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "require-dev": {
+    "wpackagist-plugin/advanced-custom-fields": "^5.12"
   }
 }
