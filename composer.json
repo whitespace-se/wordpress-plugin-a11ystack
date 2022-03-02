@@ -2,9 +2,6 @@
   "name": "whitespace-se/wordpress-plugin-a11ystack",
   "description": "Wordpress plugin that adds a11ystack-specific enhancements and features to Wordpress",
   "type": "wordpress-plugin",
-  "require": {
-    "composer/installers": "1.0"
-  },
   "license": "AGPL-3.0-or-later",
   "authors": [
     {
@@ -30,7 +27,13 @@
       "url": "https://wpackagist.org"
     }
   ],
+  "require": {
+    "composer/installers": "^2.0"
+  },
   "require-dev": {
     "wpackagist-plugin/advanced-custom-fields": "^5.12"
+  },
+  "extra": {
+    "installer-name": "whitespace-a11ystack"
   }
 }
