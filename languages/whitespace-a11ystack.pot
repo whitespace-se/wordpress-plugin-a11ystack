@@ -1,0 +1,63 @@
+# Copyright (C) 2022 Whitespace
+# This file is distributed under the same license as the Whitespace a11ystack integration plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Whitespace a11ystack integration 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wordpress-plugin-a11ystack\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-03-02T14:24:13+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.5.0\n"
+"X-Domain: whitespace-a11ystack\n"
+
+#. Plugin Name of the plugin
+msgid "Whitespace a11ystack integration"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "-"
+msgstr ""
+
+#. Description of the plugin
+msgid "Adds a11ystack-specific enhancements and features to Wordpress"
+msgstr ""
+
+#. Author of the plugin
+msgid "Whitespace"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.whitespace.se/"
+msgstr ""
+
+#: autoload/acf-open-graph-fields.php:6
+msgid "Social media"
+msgstr ""
+
+#: autoload/acf-open-graph-fields.php:10
+msgid "Title"
+msgstr ""
+
+#: autoload/acf-open-graph-fields.php:13
+msgid "If other than the title of the page."
+msgstr ""
+
+#: autoload/acf-open-graph-fields.php:26
+msgid "Description"
+msgstr ""
+
+#: autoload/acf-open-graph-fields.php:29
+msgid "Summarize the content. Preferably 55 characters or fewer."
+msgstr ""
+
+#: autoload/acf-open-graph-fields.php:44
+msgid "Image"
+msgstr ""
+
+#: autoload/acf-open-graph-fields.php:47
+msgid "If no image is uploaded, the featured image is used. In case of no featured image, a default fallback image will be used."
+msgstr ""

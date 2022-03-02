@@ -1,0 +1,21 @@
+{
+  "name": "whitespace/wordpress-plugin-a11ystack",
+  "description": "Wordpress plugin that adds a11ystack-specific enhancements and features to Wordpress",
+  "type": "wordpress-plugin",
+  "require": {
+    "composer/installers": "1.0"
+  },
+  "license": "AGPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Whitespace Dev",
+      "email": "code@whitespace.se"
+    }
+  ],
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "Whitespace\\A11ystack\\": "src/"
+    }
+  }
+}
