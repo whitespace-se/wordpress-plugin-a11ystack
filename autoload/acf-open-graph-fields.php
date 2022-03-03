@@ -1,23 +1,20 @@
 <?php
 
 function get_location() {
-  $location = [
-    [
+  $post_types = ["post", "page"];
+  $post_types = apply_filters(
+    "whitespace-a11ystack/open_graph/enabled_post_types",
+    $post_types,
+  );
+  $location = array_map(function ($post_type) {
+    return [
       [
         "param" => "post_type",
         "operator" => "==",
-        "value" => "post",
+        "value" => $post_type,
       ],
-    ],
-    [
-      [
-        "param" => "post_type",
-        "operator" => "==",
-        "value" => "page",
-      ],
-    ],
-  ];
-  $location = apply_filters("wordpress-plugin-a11ystack/location", $location);
+    ];
+  }, $post_types);
   return $location;
 }
 
