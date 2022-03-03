@@ -1,5 +1,26 @@
 <?php
 
+function get_location() {
+  $location = [
+    [
+      [
+        "param" => "post_type",
+        "operator" => "==",
+        "value" => "post",
+      ],
+    ],
+    [
+      [
+        "param" => "post_type",
+        "operator" => "==",
+        "value" => "page",
+      ],
+    ],
+  ];
+  $location = apply_filters("wordpress-plugin-a11ystack/location", $location);
+  return $location;
+}
+
 add_action("acf/init", function () {
   acf_add_local_field_group([
     "key" => "group_open_graph",
@@ -59,22 +80,7 @@ add_action("acf/init", function () {
         "library" => "all",
       ],
     ],
-    "location" => [
-      [
-        [
-          "param" => "post_type",
-          "operator" => "==",
-          "value" => "post",
-        ],
-      ],
-      [
-        [
-          "param" => "post_type",
-          "operator" => "==",
-          "value" => "page",
-        ],
-      ],
-    ],
+    "location" => get_location(),
     "menu_order" => 0,
     "position" => "normal",
     "style" => "default",
