@@ -1,5 +1,23 @@
 <?php
 
+function get_location() {
+  $post_types = ["post", "page"];
+  $post_types = apply_filters(
+    "whitespace-a11ystack/open_graph/enabled_post_types",
+    $post_types,
+  );
+  $location = array_map(function ($post_type) {
+    return [
+      [
+        "param" => "post_type",
+        "operator" => "==",
+        "value" => $post_type,
+      ],
+    ];
+  }, $post_types);
+  return $location;
+}
+
 add_action("acf/init", function () {
   acf_add_local_field_group([
     "key" => "group_open_graph",
@@ -59,22 +77,7 @@ add_action("acf/init", function () {
         "library" => "all",
       ],
     ],
-    "location" => [
-      [
-        [
-          "param" => "post_type",
-          "operator" => "==",
-          "value" => "post",
-        ],
-      ],
-      [
-        [
-          "param" => "post_type",
-          "operator" => "==",
-          "value" => "page",
-        ],
-      ],
-    ],
+    "location" => get_location(),
     "menu_order" => 0,
     "position" => "normal",
     "style" => "default",
