@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Whitespace a11ystack integration
  * Description: Adds a11ystack-specific enhancements and features to Wordpress
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Whitespace
  * Author URI: https://www.whitespace.se/
  * Text Domain: whitespace-a11ystack
