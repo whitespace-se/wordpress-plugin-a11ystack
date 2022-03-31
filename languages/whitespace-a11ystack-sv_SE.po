@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Whitespace a11ystack integration 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wordpress-plugin-"
 "a11ystack\n"
-"POT-Creation-Date: 2022-03-02T15:53:57+00:00\n"
-"PO-Revision-Date: 2022-03-02 16:54+0100\n"
+"POT-Creation-Date: 2022-03-31T16:09:56+00:00\n"
+"PO-Revision-Date: 2022-03-31 18:11+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -34,34 +34,46 @@ msgstr ""
 msgid "https://www.whitespace.se/"
 msgstr ""
 
-#: autoload/acf-open-graph-fields.php:6
+#: autoload/acf-open-graph-fields.php:24
 msgid "Social media"
 msgstr "Sociala medier"
 
-#: autoload/acf-open-graph-fields.php:10
+#: autoload/acf-open-graph-fields.php:28
 msgid "Title"
 msgstr "Titel"
 
-#: autoload/acf-open-graph-fields.php:13
+#: autoload/acf-open-graph-fields.php:31
 msgid "If other than the title of the page."
 msgstr "Om annan än titeln på sidan."
 
-#: autoload/acf-open-graph-fields.php:26
+#: autoload/acf-open-graph-fields.php:44
 msgid "Description"
 msgstr "Beskrivning"
 
-#: autoload/acf-open-graph-fields.php:29
+#: autoload/acf-open-graph-fields.php:47
 msgid "Summarize the content. Preferably 55 characters or fewer."
 msgstr "Summera innehållet. Lämpligen 55 tecken eller färre."
 
-#: autoload/acf-open-graph-fields.php:44
+#: autoload/acf-open-graph-fields.php:62
 msgid "Image"
 msgstr "Bild"
 
-#: autoload/acf-open-graph-fields.php:47
+#: autoload/acf-open-graph-fields.php:65
 msgid ""
 "If no image is uploaded, the featured image is used. In case of no featured "
 "image, a default fallback image will be used."
 msgstr ""
 "Om ingen bild anges används Utvald bild istället. När Utvald bild saknas "
 "används en fördefinierad bild."
+
+#: src/Modularity/ModFeedback.php:10
+msgid "Reaction area"
+msgstr "Reaktionsyta"
+
+#: src/Modularity/ModFeedback.php:11
+msgid "Reaction areas"
+msgstr "Reaktionsytor"
+
+#: src/Modularity/ModFeedback.php:12
+msgid "Outputs a reaction area"
+msgstr "Visar ut en reaktionsyta"
