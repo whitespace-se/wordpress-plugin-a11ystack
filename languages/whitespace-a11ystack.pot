@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Whitespace a11ystack integration plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Whitespace a11ystack integration 1.0.0\n"
+"Project-Id-Version: Whitespace a11ystack integration 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wordpress-plugin-a11ystack\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-03-02T15:53:57+00:00\n"
+"POT-Creation-Date: 2022-03-31T16:09:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: whitespace-a11ystack\n"
@@ -30,30 +30,42 @@ msgstr ""
 msgid "https://www.whitespace.se/"
 msgstr ""
 
-#: autoload/acf-open-graph-fields.php:6
+#: autoload/acf-open-graph-fields.php:24
 msgid "Social media"
 msgstr ""
 
-#: autoload/acf-open-graph-fields.php:10
+#: autoload/acf-open-graph-fields.php:28
 msgid "Title"
 msgstr ""
 
-#: autoload/acf-open-graph-fields.php:13
+#: autoload/acf-open-graph-fields.php:31
 msgid "If other than the title of the page."
 msgstr ""
 
-#: autoload/acf-open-graph-fields.php:26
+#: autoload/acf-open-graph-fields.php:44
 msgid "Description"
 msgstr ""
 
-#: autoload/acf-open-graph-fields.php:29
+#: autoload/acf-open-graph-fields.php:47
 msgid "Summarize the content. Preferably 55 characters or fewer."
 msgstr ""
 
-#: autoload/acf-open-graph-fields.php:44
+#: autoload/acf-open-graph-fields.php:62
 msgid "Image"
 msgstr ""
 
-#: autoload/acf-open-graph-fields.php:47
+#: autoload/acf-open-graph-fields.php:65
 msgid "If no image is uploaded, the featured image is used. In case of no featured image, a default fallback image will be used."
+msgstr ""
+
+#: src/Modularity/ModFeedback.php:10
+msgid "Reaction area"
+msgstr ""
+
+#: src/Modularity/ModFeedback.php:11
+msgid "Reaction areas"
+msgstr ""
+
+#: src/Modularity/ModFeedback.php:12
+msgid "Outputs a reaction area"
 msgstr ""
