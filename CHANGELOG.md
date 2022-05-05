@@ -1,3 +1,12 @@
+## [1.2.0](https://github.com/whitespace-se/wordpress-plugin-a11ystack/compare/v1.1.0...v1.2.0) (2022-05-05)
+
+
+### Features
+
+* Add feature flag for feedback module ([b2553ef](https://github.com/whitespace-se/wordpress-plugin-a11ystack/commit/b2553ef6de9b62a0da62f068d6324e5c828910f6))
+* Add feature flag for open graph fields ([cdd872d](https://github.com/whitespace-se/wordpress-plugin-a11ystack/commit/cdd872d8fa14e005a7ad129552ff96207e8ae52b))
+* Add Feedback module ([90b558d](https://github.com/whitespace-se/wordpress-plugin-a11ystack/commit/90b558df82b5c66e86fa00f2f668d08bce585251))
+
 ## [1.1.0](https://github.com/whitespace-se/wordpress-plugin-a11ystack/compare/v1.0.0...v1.1.0) (2022-03-04)
 
 

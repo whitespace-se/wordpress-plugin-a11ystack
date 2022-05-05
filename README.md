@@ -29,6 +29,13 @@ Then get the plugin via composer:
 composer require whitespace-se/wordpress-plugin-a11ystack
 ```
 
+## Configuration
+
+Set these constants to true to enable the feature.
+
+- `WP_A11YSTACK_ENABLE_FEEDBACK_MODULE`: Feedback module
+- `WP_A11YSTACK_ENABLE_OPEN_GRAPH_FIELDS`: Open graph fields
+
 ## Contributing
 
 Generate new pot file with this command:
