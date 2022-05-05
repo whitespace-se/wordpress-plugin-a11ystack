@@ -1,6 +1,9 @@
 <?php
 
-function get_location() {
+add_action("acf/init", function () {
+  if (!whitespace_a11ystack_feature_enabled("open_graph_fields", true)) {
+    return;
+  }
   $post_types = ["post", "page"];
   $post_types = apply_filters(
     "whitespace-a11ystack/open_graph/enabled_post_types",
@@ -15,10 +18,7 @@ function get_location() {
       ],
     ];
   }, $post_types);
-  return $location;
-}
 
-add_action("acf/init", function () {
   acf_add_local_field_group([
     "key" => "group_open_graph",
     "title" => __("Social media", "whitespace-a11ystack"),
@@ -77,7 +77,7 @@ add_action("acf/init", function () {
         "library" => "all",
       ],
     ],
-    "location" => get_location(),
+    "location" => $location,
     "menu_order" => 0,
     "position" => "normal",
     "style" => "default",
