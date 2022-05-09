@@ -29,3 +29,14 @@ add_action("init", function () {
     );
   }
 });
+
+/**
+ * Hides the preview button in module editor
+ */
+add_action("admin_head", function () {
+  global $current_screen;
+
+  if (whitespace_a11ystack_is_modularity_page($current_screen->post_type)) {
+    echo '<style type="text/css">#preview-action,.updated a{display:none;}</style>';
+  }
+});
