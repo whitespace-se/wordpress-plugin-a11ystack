@@ -1,3 +1,13 @@
+## [1.3.0](https://github.com/whitespace-se/wordpress-plugin-a11ystack/compare/v1.2.0...v1.3.0) (2022-05-09)
+
+
+### Features
+
+* Change module editor publish button label ([d176a8a](https://github.com/whitespace-se/wordpress-plugin-a11ystack/commit/d176a8aadaeacff05442bd29c3d059d630c18ddb))
+* Hide module editor preview button ([96f611a](https://github.com/whitespace-se/wordpress-plugin-a11ystack/commit/96f611ab5ef3d94884956001f4ff3e7529ebbacb))
+* Replace taxonomy metaboxes with ACF ([765792c](https://github.com/whitespace-se/wordpress-plugin-a11ystack/commit/765792ce76f6b7b2d0b49028e66254ae5634f908))
+* Update translations ([4aa9e0f](https://github.com/whitespace-se/wordpress-plugin-a11ystack/commit/4aa9e0f346ab6f3cf5062c87be573592f43225bb))
+
 ## [1.2.0](https://github.com/whitespace-se/wordpress-plugin-a11ystack/compare/v1.1.0...v1.2.0) (2022-05-05)
 
 
