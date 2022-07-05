@@ -36,7 +36,6 @@ add_action(
           continue;
         }
         $labels = get_taxonomy_labels($taxonomy);
-        error_log(var_export($labels, true));
         $field = [
           "key" =>
             "field_a11ystack_" .
