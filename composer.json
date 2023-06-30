@@ -11,7 +11,8 @@
   ],
   "config": {
     "allow-plugins": {
-      "composer/installers": true
+      "composer/installers": true,
+      "kylekatarnls/update-helper": true
     }
   },
   "minimum-stability": "dev",
@@ -25,13 +26,18 @@
     {
       "type": "composer",
       "url": "https://wpackagist.org"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:whitespace-se/Modularity.git"
     }
   ],
   "require": {
     "composer/installers": "^1.0 || ^2.0"
   },
   "require-dev": {
-    "wpackagist-plugin/advanced-custom-fields": "^5.12"
+    "wpackagist-plugin/advanced-custom-fields": "^5.12",
+    "helsingborg-stad/modularity": "dev-whitespace as 2.12.2"
   },
   "extra": {
     "installer-name": "whitespace-a11ystack"
