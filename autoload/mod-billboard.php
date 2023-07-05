@@ -19,6 +19,17 @@ add_action("acf/init", function () {
     "hero" => __("Hero", "whitespace-a11ystack"),
   ];
   $formats = apply_filters("whitespace_a11ystack_billboard_formats", $formats);
+
+  $image_aspect_ratios = [
+    "16/9" => __("Landscape 16:9", "whitespace-a11ystack"),
+    "4/3" => __("Landscape 4:3", "whitespace-a11ystack"),
+    "1/1" => __("Square", "whitespace-a11ystack"),
+  ];
+  $image_aspect_ratios = apply_filters(
+    "whitespace_a11ystack_billboard_image_aspect_ratios",
+    $image_aspect_ratios,
+  );
+
   $fields = [
     [
       "key" => "field_mod_billboard_format",
@@ -41,6 +52,43 @@ add_action("acf/init", function () {
       "return_format" => "array",
       "preview_size" => "medium",
       "library" => "all",
+      "wrapper" => [
+        "width" => "33",
+        "class" => "",
+        "id" => "",
+      ],
+    ],
+    [
+      "key" => "field_mod_billboard_image_aspect_ratio",
+      "label" => __("Image aspect ratio", "whitespace-a11ystack"),
+      "name" => "image_aspect_ratio",
+      "type" => "select",
+      "required" => 1,
+      "choices" => $image_aspect_ratios,
+      "wrapper" => [
+        "width" => "33",
+        // Hide the field if there is only one choice
+        count($image_aspect_ratios) > 1 ? [] : ["style" => "display:none;"],
+      ],
+      "default_value" =>
+        count($image_aspect_ratios) > 1
+          ? null
+          : array_keys($image_aspect_ratios)[0],
+    ],
+    [
+      "key" => "field_mod_billboard_image_placement",
+      "label" => __("Image placement", "whitespace-a11ystack"),
+      "name" => "image_placement",
+      "type" => "select",
+      "required" => 1,
+      "choices" => [
+        "left" => __("Left", "whitespace-a11ystack"),
+        "right" => __("Right", "whitespace-a11ystack"),
+      ],
+      "wrapper" => [
+        "width" => "33",
+      ],
+      "default_value" => "left",
     ],
     [
       "key" => "field_mod_billboard_links",
