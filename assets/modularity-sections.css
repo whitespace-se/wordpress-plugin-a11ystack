@@ -1,0 +1,265 @@
+/* Overrides for Modularity */
+
+.modularity-sidebar-area li {
+  display: block;
+}
+.modularity-sidebar-area li .modularity-line-wrapper {
+  display: flex;
+}
+
+.modularity-sidebar-area li .modularity-module-name {
+  width: 100%;
+  margin-right: 0;
+}
+
+.modularity-sidebar-area li .modularity-module-name::before {
+  margin-left: 0;
+}
+
+.modularity-module-hide {
+  width: 2em;
+  border-left: 1px solid #e5e5e5;
+  border-right: 0 !important;
+  flex: none;
+}
+.modularity-sidebar-area .modularity-module-hide {
+  color: transparent;
+}
+.modularity-module-columns {
+  width: 6em !important;
+  border-left: 1px solid #e5e5e5;
+  flex: none;
+  display: flex !important;
+  align-items: center;
+}
+.modularity-module-columns label {
+  display: none;
+}
+.modularity-module-background,
+.modularity-module-align {
+  flex: none;
+  display: flex !important;
+  align-items: center;
+  width: 8em !important;
+  border-left: 1px solid #e5e5e5;
+}
+.modularity-module-background label,
+.modularity-module-align label {
+  display: none;
+}
+.modularity-module-actions {
+  box-sizing: border-box;
+  width: 8rem !important;
+  border-left: 1px solid #e5e5e5;
+  flex: none;
+  display: flex !important;
+}
+.modularity-module-actions a {
+  display: flex !important;
+  align-items: center;
+  padding: 0 !important;
+  justify-content: center;
+}
+.modularity-module-actions label {
+  display: none;
+}
+.modularity-js-thickbox-open span {
+  display: none !important;
+}
+.modularity-js-thickbox-import span {
+  display: none !important;
+}
+.modularity-module-remove span {
+  display: none !important;
+}
+
+/* Modularity header */
+
+.modularity-sidebar-header .modularity-module-actions {
+}
+
+.modularity-sidebar-header {
+  display: block;
+  table-layout: fixed;
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  padding: 0;
+  height: 50px;
+  border-radius: 1px;
+  position: relative;
+  box-sizing: border-box;
+  top: 0.25rem;
+}
+@media (max-width: 1450px) {
+  .modularity-sidebar-header {
+    height: 100px;
+    display: block;
+    padding-left: 50px;
+  }
+}
+.modularity-sidebar-header.ui-sortable-placeholder {
+  border: 3px dashed #999;
+  min-height: 50px;
+}
+.modularity-sidebar-header .modularity-line-wrapper {
+  display: flex;
+}
+.modularity-sidebar-header .modularity-line-wrapper > span {
+  vertical-align: middle;
+  padding: 0 15px;
+  height: 50px;
+  line-height: 48px;
+}
+.modularity-sidebar-header .modularity-module-name {
+  position: relative;
+  margin-right: 10px;
+  width: 30%;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 1450px) {
+  .modularity-sidebar-header .modularity-module-name {
+    display: block !important;
+    width: auto !important;
+    clear: both;
+  }
+}
+@media (min-width: 1451px) {
+  .modularity-sidebar-header .modularity-module-name {
+    width: 100%;
+  }
+}
+@media (min-width: 1651px) {
+  .modularity-sidebar-header .modularity-module-name {
+    width: 100%;
+  }
+}
+.modularity-sidebar-header .modularity-module-title {
+  font-weight: normal;
+  position: relative;
+}
+.modularity-sidebar-header .modularity-module-hide {
+}
+@media (max-width: 1451px) {
+  .modularity-sidebar-header .modularity-module-hide {
+  }
+}
+.modularity-sidebar-header .modularity-module-columns {
+  width: 130px;
+  border-left: 1px solid #e5e5e5;
+}
+@media (max-width: 1451px) {
+  .modularity-sidebar-header .modularity-module-columns {
+    padding: 0 0 0 15px !important;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+.modularity-sidebar-header .modularity-module-background,
+.modularity-sidebar-header .modularity-module-align {
+  width: 130px;
+  border-left: 1px solid #e5e5e5;
+}
+@media (max-width: 1451px) {
+  .modularity-sidebar-header .modularity-module-background,
+  .modularity-sidebar-header .modularity-module-align {
+    padding: 0 0 0 15px !important;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+.modularity-sidebar-header span.modularity-module-actions {
+  position: relative;
+  border-left: 1px solid #e5e5e5;
+  width: 50%;
+  display: flex;
+}
+@media (max-width: 1450px) {
+  .modularity-sidebar-header span.modularity-module-actions {
+    width: auto !important;
+    display: block !important;
+    clear: both !important;
+    border-left: none;
+    border-bottom: none;
+    border-top: 1px solid #e5e5e5;
+  }
+}
+@media (min-width: 1451px) {
+  .modularity-sidebar-header span.modularity-module-actions {
+    width: 40%;
+  }
+}
+@media (min-width: 1651px) {
+  .modularity-sidebar-header span.modularity-module-actions {
+    width: 35%;
+  }
+}
+.modularity-sidebar-header span.modularity-module-actions a {
+  font-size: 10pt;
+  color: #000;
+  text-decoration: none;
+  height: inherit;
+  background: rgba(0, 0, 0, 0.03);
+  line-height: 50px;
+  width: 33.33%;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+  white-space: nowrap;
+  transition: background 200ms ease, color 200ms ease, transform 200ms ease;
+}
+.modularity-sidebar-header span.modularity-module-actions a:not(:last-child) {
+  border-right: 1px solid #e5e5e5;
+}
+.modularity-sidebar-header span.modularity-module-actions a > span {
+  margin-left: 10px;
+  display: inline-block;
+}
+.modularity-sidebar-header span.modularity-module-actions a:after {
+  content: "";
+  position: absolute;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 0;
+  background-color: rgba(203, 0, 80, 0.4);
+  transition: height 100ms ease;
+}
+.modularity-sidebar-header span.modularity-module-actions a:before {
+  content: "";
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin: -2px 0 -2px 0;
+  background-size: contain;
+}
+@media (max-width: 600px) {
+  .modularity-sidebar-header span.modularity-module-actions a {
+    width: 50%;
+  }
+}
+.modularity-sidebar-header .modularity-module-actions a:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+.modularity-sidebar-header .modularity-module-actions a:hover:after {
+  height: 4px;
+}
+@media (min-width: 1451px) {
+  .modularity-sidebar-header .modularity-module-name:before {
+    margin-left: 42px;
+  }
+}
+.modularity-sidebar-header.validation-error {
+  background-color: #f4dfdf;
+  border-color: #e23030;
+}
+.modularity-sidebar-header.validation-error .modularity-module-name:before {
+  background-color: #e23030;
+  color: #fff;
+}
