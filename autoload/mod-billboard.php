@@ -42,7 +42,7 @@ add_action("acf/init", function () {
       // Hide the field if there is only one choice
       "wrapper" => [
         // Hide the field if there is only one choice
-        "style" =>  count($formats) > 1 ? null : "display:none;",
+        "style" => count($formats) > 1 ? null : "display:none;",
       ],
       "default_value" => count($formats) > 1 ? null : array_keys($formats)[0],
     ],
@@ -71,7 +71,7 @@ add_action("acf/init", function () {
       "wrapper" => [
         "width" => "33",
         // Hide the field if there is only one choice
-        "style" =>  count($image_aspect_ratios) > 1 ? null : "display:none;",
+        "style" => count($image_aspect_ratios) > 1 ? null : "display:none;",
       ],
       "default_value" =>
         count($image_aspect_ratios) > 1
