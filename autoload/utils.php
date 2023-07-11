@@ -37,5 +37,5 @@ add_action(
       $store->set($key, $group);
     }
   },
-  20 // Run after Municipio theme bootstrap
+  20, // Run after Municipio theme bootstrap
 );
