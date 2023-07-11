@@ -2,7 +2,7 @@
 
 add_action("admin_enqueue_scripts", function () {
   $handle = "modularity-sections";
-  $url = WHITESPACE_A11YSTACK_DIR_URL . "assets/modularity-sections.js";
+  $url = WHITESPACE_A11YSTACK_DIR_URL . "/assets/modularity-sections.js";
   wp_register_script($handle, $url, ["modularity"], "1.0");
   wp_enqueue_script($handle);
 
@@ -28,7 +28,7 @@ add_action("admin_enqueue_scripts", function () {
     $modularity_sections_config,
   );
 
-  $url = WHITESPACE_A11YSTACK_DIR_URL . "assets/modularity-sections.css";
+  $url = WHITESPACE_A11YSTACK_DIR_URL . "/assets/modularity-sections.css";
   wp_register_style($handle, $url, ["modularity"], "1.0");
   wp_enqueue_style($handle);
 });
