@@ -16,9 +16,20 @@ add_filter("Modularity/gatsby_supported_modules", function ($modules) {
 add_action("acf/init", function () {
   $formats = [
     "feature" => __("Featured story", "whitespace-a11ystack"),
-    "hero" => __("Hero", "whitespace-a11ystack"),
+    "card" => __("Card", "whitespace-a11ystack"),
   ];
   $formats = apply_filters("whitespace_a11ystack_billboard_formats", $formats);
+
+  $colors = [];
+  $colors = apply_filters("Modularity/backgroundOptions", $colors);
+  $colors = array_merge(
+    [
+      "" => __("None", "whitespace-a11ystack"),
+      "white" => __("White", "whitespace-a11ystack"),
+    ],
+    $colors,
+  );
+  $colors = apply_filters("whitespace_a11ystack_billboard_colors", $colors);
 
   $image_aspect_ratios = [
     "16/9" => __("Landscape 16:9", "whitespace-a11ystack"),
@@ -42,9 +53,34 @@ add_action("acf/init", function () {
       // Hide the field if there is only one choice
       "wrapper" => [
         // Hide the field if there is only one choice
-        "style" =>  count($formats) > 1 ? null : "display:none;",
+        "style" => count($formats) > 1 ? null : "display:none;",
       ],
       "default_value" => count($formats) > 1 ? null : array_keys($formats)[0],
+    ],
+    [
+      "key" => "field_mod_billboard_color",
+      "label" => __("Color", "whitespace-a11ystack"),
+      "name" => "color",
+      "type" => count($colors) > 5 ? "select" : "radio",
+      "required" => 1,
+      "choices" => $colors,
+      "layout" => "horizontal",
+      // Hide the field if there is only one choice
+      "wrapper" => [
+        // Hide the field if there is only one choice
+        "style" => count($colors) > 1 ? null : "display:none;",
+      ],
+      "default_value" => count($colors) > 1 ? null : array_keys($colors)[0],
+      // Show only for "card" format
+      "conditional_logic" => [
+        [
+          [
+            "field" => "field_mod_billboard_format",
+            "operator" => "==",
+            "value" => "card",
+          ],
+        ],
+      ],
     ],
     [
       "key" => "field_mod_billboard_image",
@@ -71,12 +107,22 @@ add_action("acf/init", function () {
       "wrapper" => [
         "width" => "33",
         // Hide the field if there is only one choice
-        "style" =>  count($image_aspect_ratios) > 1 ? null : "display:none;",
+        "style" => count($image_aspect_ratios) > 1 ? null : "display:none;",
       ],
       "default_value" =>
         count($image_aspect_ratios) > 1
           ? null
           : array_keys($image_aspect_ratios)[0],
+      // Show only for "feature" format
+      "conditional_logic" => [
+        [
+          [
+            "field" => "field_mod_billboard_format",
+            "operator" => "==",
+            "value" => "feature",
+          ],
+        ],
+      ],
     ],
     [
       "key" => "field_mod_billboard_image_placement",
