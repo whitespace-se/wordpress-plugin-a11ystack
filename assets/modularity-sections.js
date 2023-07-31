@@ -58,6 +58,7 @@
         });
         lineWrapper.insertBefore(moduleAlign, moduleActions);
       }
+      return {};
     }
 
     let sidebarAreas = document.querySelectorAll(".modularity-sidebar-area");
@@ -87,7 +88,10 @@
         mutations.forEach((mutation) => {
           if (mutation.type === "childList") {
             mutation.addedNodes.forEach((node) => {
-              onAddModule(node, element);
+              if (node.modularitySections) {
+                return;
+              }
+              node.modularitySections = onAddModule(node, element);
             });
           }
         });
