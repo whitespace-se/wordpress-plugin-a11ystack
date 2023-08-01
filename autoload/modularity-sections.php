@@ -3,7 +3,15 @@
 add_action("admin_enqueue_scripts", function () {
   $handle = "modularity-sections";
   $url = WHITESPACE_A11YSTACK_DIR_URL . "/assets/modularity-sections.js";
-  wp_register_script($handle, $url, ["modularity"], "1.0");
+  wp_register_script(
+    $handle,
+    $url,
+    ["modularity"],
+    hash_file(
+      "md5",
+      WHITESPACE_A11YSTACK_PATH . "/assets/modularity-sections.js",
+    ),
+  );
   wp_enqueue_script($handle);
 
   $background_options = [];
