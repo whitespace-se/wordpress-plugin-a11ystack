@@ -4,20 +4,21 @@
   const { backgroundOptions, enableBackground, enableAlign, alignOptions } =
     MODULARITY_SECTIONS_CONFIG;
 
-  setTimeout(() => {
-    function onAddModule(node, sidebarArea) {
-      let areaId = sidebarArea.dataset.areaId;
-      let moduleIdInput = node.querySelector(".modularity-js-module-id");
-      let moduleId = moduleIdInput.name.match(
-        /modularity_modules\[.*?\]\[(.*?)\]\[postid\]/,
-      )?.[1];
-      let postId = moduleIdInput.value;
-      let lineWrapper = node.querySelector(".modularity-line-wrapper");
-      let moduleActions = node.querySelector(".modularity-module-actions");
-      if (enableBackground) {
-        let moduleBackground = document.createElement("SPAN");
-        moduleBackground.classList.add("modularity-module-background");
-        moduleBackground.innerHTML = `
+  let initialized = false;
+
+  function onAddModule(node, sidebarArea) {
+    let areaId = sidebarArea.dataset.areaId;
+    let moduleIdInput = node.querySelector(".modularity-js-module-id");
+    let moduleId = moduleIdInput.name.match(
+      /modularity_modules\[.*?\]\[(.*?)\]\[postid\]/,
+    )?.[1];
+    let postId = moduleIdInput.value;
+    let lineWrapper = node.querySelector(".modularity-line-wrapper");
+    let moduleActions = node.querySelector(".modularity-module-actions");
+    if (enableBackground) {
+      let moduleBackground = document.createElement("SPAN");
+      moduleBackground.classList.add("modularity-module-background");
+      moduleBackground.innerHTML = `
         <select
           name="modularity_modules[${areaId}][${moduleId}][background]"
           class="js-modularity-background-select"
@@ -27,19 +28,19 @@
           <option value="">${"None"}</option>
         </select>
       `;
-        let moduleBackgroundSelect = moduleBackground.querySelector("select");
-        Object.entries(backgroundOptions).forEach(([value, label]) => {
-          let option = document.createElement("OPTION");
-          option.value = value;
-          option.innerHTML = label;
-          moduleBackgroundSelect.appendChild(option);
-        });
-        lineWrapper.insertBefore(moduleBackground, moduleActions);
-      }
-      if (enableAlign) {
-        let moduleAlign = document.createElement("SPAN");
-        moduleAlign.classList.add("modularity-module-align");
-        moduleAlign.innerHTML = `
+      let moduleBackgroundSelect = moduleBackground.querySelector("select");
+      Object.entries(backgroundOptions).forEach(([value, label]) => {
+        let option = document.createElement("OPTION");
+        option.value = value;
+        option.innerHTML = label;
+        moduleBackgroundSelect.appendChild(option);
+      });
+      lineWrapper.insertBefore(moduleBackground, moduleActions);
+    }
+    if (enableAlign) {
+      let moduleAlign = document.createElement("SPAN");
+      moduleAlign.classList.add("modularity-module-align");
+      moduleAlign.innerHTML = `
         <select
           name="modularity_modules[${areaId}][${moduleId}][align]"
           class="js-modularity-align-select"
@@ -49,72 +50,90 @@
           <option value="">${"Auto"}</option>
         </select>
       `;
-        let moduleAlignSelect = moduleAlign.querySelector("select");
-        Object.entries(alignOptions).forEach(([value, label]) => {
-          let option = document.createElement("OPTION");
-          option.value = value;
-          option.innerHTML = label;
-          moduleAlignSelect.appendChild(option);
-        });
-        lineWrapper.insertBefore(moduleAlign, moduleActions);
-      }
-      return {};
+      let moduleAlignSelect = moduleAlign.querySelector("select");
+      Object.entries(alignOptions).forEach(([value, label]) => {
+        let option = document.createElement("OPTION");
+        option.value = value;
+        option.innerHTML = label;
+        moduleAlignSelect.appendChild(option);
+      });
+      lineWrapper.insertBefore(moduleAlign, moduleActions);
     }
+    return {};
+  }
 
-    let sidebarAreas = document.querySelectorAll(".modularity-sidebar-area");
-    [...sidebarAreas].forEach((element) => {
-      let header = document.createElement("DIV");
-      element.parentElement.insertBefore(header, element);
-      header.classList.add("modularity-sidebar-header");
-      header.innerHTML = `
-      <span class="modularity-line-wrapper">
-        <span class="modularity-module-name">${"Module"}</span>
-        <span class="modularity-module-hide">${"Hide"}</span>
-        <span class="modularity-module-columns">${"Width"}</span>
-        ${
-          enableBackground
-            ? `<span class="modularity-module-background">${"Background"}</span>`
-            : ""
-        }
-        ${
-          enableAlign
-            ? `<span class="modularity-module-align">${"Alignment"}</span>`
-            : ""
-        }
-        <span class="modularity-module-actions">${"Actions"}</span>
-      </span>
-    `;
-      const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          if (mutation.type === "childList") {
-            mutation.addedNodes.forEach((node) => {
-              if (node.modularitySections) {
-                return;
-              }
-              node.modularitySections = onAddModule(node, element);
-            });
+  function init() {
+    if (initialized) {
+      return Promise.resolve();
+    }
+    initialized = true;
+    return new Promise(resolve => setTimeout(() => {
+      let sidebarAreas = document.querySelectorAll(".modularity-sidebar-area");
+      [...sidebarAreas].forEach((element) => {
+        let header = document.createElement("DIV");
+        element.parentElement.insertBefore(header, element);
+        header.classList.add("modularity-sidebar-header");
+        header.innerHTML = `
+          <span class="modularity-line-wrapper">
+            <span class="modularity-module-name">${"Module"}</span>
+            <span class="modularity-module-hide">${"Hide"}</span>
+            <span class="modularity-module-columns">${"Width"}</span>
+            ${
+              enableBackground
+                ? `<span class="modularity-module-background">${"Background"}</span>`
+                : ""
+            }
+            ${
+              enableAlign
+                ? `<span class="modularity-module-align">${"Alignment"}</span>`
+                : ""
+            }
+            <span class="modularity-module-actions">${"Actions"}</span>
+          </span>
+        `;
+        let handler = (node) => {
+          if (!node.dataset.moduleId) {
+            return;
           }
+          if (node.modularitySections) {
+            return;
+          }
+          node.modularitySections = onAddModule(node, element);
+        };
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.type === "childList") {
+              mutation.addedNodes.forEach(handler);
+            }
+          });
         });
+        observer.observe(element, {
+          childList: true,
+        });
+        [...element.children].forEach(handler);
+        return { element, observer, header };
       });
-      observer.observe(element, {
-        childList: true,
-      });
-      return { element, observer, header };
-    });
-  }, 0);
+      resolve();
+    }, 0));
+  }
+
   $(document).on("ajaxSuccess", function (event, jqXHR, ajaxOptions, data) {
-    setTimeout(() => {
+    setTimeout(async () => {
       let params = new URLSearchParams(ajaxOptions.data);
       let action = params.get("action");
       if (action !== "get_post_modules") {
         return;
       }
+      await init();
       if (enableBackground) {
         Object.entries(data).forEach(([areaId, { modules }]) => {
           let backgroundSelects = document.querySelectorAll(
             `.js-modularity-background-select[data-area-id="${areaId}"]`,
           );
           Object.entries(modules).forEach(([index, module]) => {
+            if (!backgroundSelects[index]) {
+              return
+            }
             let background = module.background;
             backgroundSelects[index].value = background || "";
           });
@@ -126,6 +145,9 @@
             `.js-modularity-align-select[data-area-id="${areaId}"]`,
           );
           Object.entries(modules).forEach(([index, module]) => {
+            if (!alignSelects[index]) {
+              return
+            }
             let align = module.align;
             alignSelects[index].value = align || "";
           });
