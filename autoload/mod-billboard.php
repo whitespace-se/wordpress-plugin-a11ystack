@@ -20,15 +20,7 @@ add_action("acf/init", function () {
   ];
   $formats = apply_filters("whitespace_a11ystack_billboard_formats", $formats);
 
-  $colors = [];
-  $colors = apply_filters("Modularity/backgroundOptions", $colors);
-  $colors = array_merge(
-    [
-      "" => __("None", "whitespace-a11ystack"),
-      "white" => __("White", "whitespace-a11ystack"),
-    ],
-    $colors,
-  );
+  $colors = whitespace_a11ystack_get_color_choices([]);
   $colors = apply_filters("whitespace_a11ystack_billboard_colors", $colors);
 
   $image_aspect_ratios = [

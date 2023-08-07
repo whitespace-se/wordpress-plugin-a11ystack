@@ -56,13 +56,28 @@ add_action(
       "conditional_logic" => [
         [
           [
-            "field" => "field_571dfd4c0d9d9",
+            "field" => "field_571dfd4c0d9d9", // Display mode
             "operator" => "==",
             "value" => "inline-list",
           ],
         ],
       ],
     ]);
+
+    acf_add_local_field(
+      whitespace_a11ystack_color_field([
+        "parent" => "group_571dfd3c07a77",
+        // "conditional_logic" => [
+        //   [
+        //     [
+        //       "field" => "field_571dfd4c0d9d9", // Display mode
+        //       "operator" => "!=",
+        //       "value" => "inline-list",
+        //     ],
+        //   ],
+        // ],
+      ]),
+    );
   },
   20,
 );

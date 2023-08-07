@@ -10,7 +10,9 @@
 
 define("WHITESPACE_A11YSTACK_PLUGIN_FILE", __FILE__);
 define("WHITESPACE_A11YSTACK_PATH", dirname(__FILE__));
-define("WHITESPACE_A11YSTACK_DIR_URL", plugin_dir_url(__FILE__));
+if (!defined("WHITESPACE_A11YSTACK_DIR_URL")) {
+  define("WHITESPACE_A11YSTACK_DIR_URL", plugin_dir_url(__FILE__));
+}
 define(
   "WHITESPACE_A11YSTACK_AUTOLOAD_PATH",
   WHITESPACE_A11YSTACK_PATH . "/autoload",

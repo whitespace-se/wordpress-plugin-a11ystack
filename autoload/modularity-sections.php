@@ -14,7 +14,11 @@ add_action("admin_enqueue_scripts", function () {
   );
   wp_enqueue_script($handle);
 
-  $background_options = [];
+  $background_options = whitespace_a11ystack_get_color_choices([
+    "auto" => false,
+    "transparent" => false,
+    "white" => false,
+  ]);
   $background_options = apply_filters(
     "Modularity/backgroundOptions",
     $background_options,
