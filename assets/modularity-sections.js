@@ -67,13 +67,16 @@
       return Promise.resolve();
     }
     initialized = true;
-    return new Promise(resolve => setTimeout(() => {
-      let sidebarAreas = document.querySelectorAll(".modularity-sidebar-area");
-      [...sidebarAreas].forEach((element) => {
-        let header = document.createElement("DIV");
-        element.parentElement.insertBefore(header, element);
-        header.classList.add("modularity-sidebar-header");
-        header.innerHTML = `
+    return new Promise((resolve) =>
+      setTimeout(() => {
+        let sidebarAreas = document.querySelectorAll(
+          ".modularity-sidebar-area",
+        );
+        [...sidebarAreas].forEach((element) => {
+          let header = document.createElement("DIV");
+          element.parentElement.insertBefore(header, element);
+          header.classList.add("modularity-sidebar-header");
+          header.innerHTML = `
           <span class="modularity-line-wrapper">
             <span class="modularity-module-name">${"Module"}</span>
             <span class="modularity-module-hide">${"Hide"}</span>
@@ -91,30 +94,31 @@
             <span class="modularity-module-actions">${"Actions"}</span>
           </span>
         `;
-        let handler = (node) => {
-          if (!node.dataset.moduleId) {
-            return;
-          }
-          if (node.modularitySections) {
-            return;
-          }
-          node.modularitySections = onAddModule(node, element);
-        };
-        const observer = new MutationObserver((mutations) => {
-          mutations.forEach((mutation) => {
-            if (mutation.type === "childList") {
-              mutation.addedNodes.forEach(handler);
+          let handler = (node) => {
+            if (!node.dataset.moduleId) {
+              return;
             }
+            if (node.modularitySections) {
+              return;
+            }
+            node.modularitySections = onAddModule(node, element);
+          };
+          const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+              if (mutation.type === "childList") {
+                mutation.addedNodes.forEach(handler);
+              }
+            });
           });
+          observer.observe(element, {
+            childList: true,
+          });
+          [...element.children].forEach(handler);
+          return { element, observer, header };
         });
-        observer.observe(element, {
-          childList: true,
-        });
-        [...element.children].forEach(handler);
-        return { element, observer, header };
-      });
-      resolve();
-    }, 0));
+        resolve();
+      }, 0),
+    );
   }
 
   $(document).on("ajaxSuccess", function (event, jqXHR, ajaxOptions, data) {
@@ -132,7 +136,7 @@
           );
           Object.entries(modules).forEach(([index, module]) => {
             if (!backgroundSelects[index]) {
-              return
+              return;
             }
             let background = module.background;
             backgroundSelects[index].value = background || "";
@@ -146,7 +150,7 @@
           );
           Object.entries(modules).forEach(([index, module]) => {
             if (!alignSelects[index]) {
-              return
+              return;
             }
             let align = module.align;
             alignSelects[index].value = align || "";
