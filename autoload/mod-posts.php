@@ -67,6 +67,7 @@ add_action(
     acf_add_local_field(
       whitespace_a11ystack_color_field([
         "parent" => "group_571dfd3c07a77",
+        "name" => "theme",
         // "conditional_logic" => [
         //   [
         //     [

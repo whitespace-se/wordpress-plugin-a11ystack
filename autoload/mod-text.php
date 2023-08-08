@@ -18,6 +18,7 @@ add_action("acf/init", function () {
     whitespace_a11ystack_color_field([
       "parent" => "group_5891b49127038",
       "default_value" => "transparent",
+      "name" => "theme",
     ]),
   );
 });

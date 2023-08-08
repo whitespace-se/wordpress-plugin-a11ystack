@@ -50,7 +50,7 @@ function whitespace_a11ystack_color_field($extra = [], $options = []) {
     // "parent" => "", // Intentionally left out
     "instructions" => "",
     "show_in_graphql" => true,
-    "graphql_field_name" => "color",
+    // "graphql_field_name" => "color",
     "choices" => $options,
     "default_value" => "auto",
     "allow_null" => false,
