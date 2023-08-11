@@ -8,11 +8,11 @@ add_action("acf/init", function () {
   $icons = array_combine($icons, $icons);
   acf_add_local_field_group([
     "key" => "group_municipio_gatsby_menu_item",
-    "title" => __("Menu module properties", "municipio-gatsby"),
+    "title" => __("Menu module properties", "whitespace-a11ystack"),
     "fields" => [
       [
         "key" => "field_municipio_gatsby_menu_item_icon",
-        "label" => __("Icon", "municipio-gatsby"),
+        "label" => __("Icon", "whitespace-a11ystack"),
         "name" => "icon",
         "type" => "select",
         "required" => 0,

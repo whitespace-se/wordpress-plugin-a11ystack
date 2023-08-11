@@ -6,7 +6,7 @@ add_action(
     // Manual input > Link
     acf_add_local_field([
       "key" => "field_mod_posts_manual_input_link",
-      "label" => __("Link", "municipio-gatsby"),
+      "label" => __("Link", "whitespace-a11ystack"),
       "name" => "link",
       "parent" => "field_576258d3110b0",
       "type" => "link",
@@ -34,7 +34,7 @@ add_action(
     // Manual input > Image
     acf_add_local_field([
       "key" => "field_mod_posts_manual_input_image",
-      "label" => __("Image", "municipio-gatsby"),
+      "label" => __("Image", "whitespace-a11ystack"),
       "name" => "image",
       "parent" => "field_576258d3110b0",
       "type" => "image",
@@ -43,7 +43,7 @@ add_action(
     // Data Display > Heading position
     acf_add_local_field([
       "key" => "field_mod_posts_heading_position",
-      "label" => __("Heading position", "municipio-gatsby"),
+      "label" => __("Heading position", "whitespace-a11ystack"),
       "name" => "heading_position",
       "parent" => "group_571dfd3c07a77", // Data display
       "type" => "radio",
