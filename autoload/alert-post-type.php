@@ -42,6 +42,7 @@ add_action("init", function () {
     "graphql_plural_name" => "Alerts",
     "menu_position" => null,
     "supports" => ["title", "editor", "author", "revisions"],
+    "optional_ui" => true,
   ];
 
   register_post_type("alert", $args);
