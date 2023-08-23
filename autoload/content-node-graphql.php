@@ -19,3 +19,34 @@ add_action("graphql_register_types", function ($type_registry) {
     },
   ]);
 });
+
+/**
+ * Adds `manualExcerpt` field to NodeWithExcerpt GraphQL interface.
+ */
+add_action("graphql_register_types", function ($type_registry) {
+  $type_registry->register_field("NodeWithExcerpt", "manualExcerpt", [
+    "type" => "String",
+    "description" => __(
+      "The manual excerpt of the post.",
+      "whitespace-a11ystack",
+    ),
+    "args" => [
+      "format" => [
+        "type" => "PostObjectFieldFormatEnum",
+        "description" => __(
+          "Format of the field output",
+          "whitespace-a11ystack",
+        ),
+      ],
+    ],
+    "resolve" => function ($source, $args) {
+      if (!has_excerpt($source->ID)) {
+        return null;
+      }
+      if (isset($args["format"]) && "raw" === $args["format"]) {
+        return $source->excerptRaw;
+      }
+      return $source->excerptRendered;
+    },
+  ]);
+});
