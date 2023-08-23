@@ -41,7 +41,7 @@ add_action("init", function () {
     "graphql_single_name" => "alert",
     "graphql_plural_name" => "alerts",
     "menu_position" => null,
-    "supports" => ["title", "editor", "author", "revisions"],
+    "supports" => ["title", "editor", "author", "revisions", "excerpt"],
     "optional_ui" => true,
   ];
 
