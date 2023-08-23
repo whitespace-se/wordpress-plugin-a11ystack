@@ -37,7 +37,8 @@
   },
   "require-dev": {
     "wpackagist-plugin/advanced-custom-fields": "^5.12",
-    "helsingborg-stad/modularity": "dev-whitespace as 2.12.2"
+    "helsingborg-stad/modularity": "dev-whitespace as 2.12.2",
+    "wp-graphql/wp-graphql": "^1.14"
   },
   "extra": {
     "installer-name": "whitespace-a11ystack"
