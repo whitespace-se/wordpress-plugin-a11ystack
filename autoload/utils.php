@@ -72,3 +72,15 @@ function whitespace_a11ystack_get_color_choices($merge = []) {
   $options = array_filter($options);
   return $options;
 }
+
+function whitespace_a11ystack_post_has_modules($post) {
+  $areas = get_post_meta($post, "modularity-modules", true);
+  foreach ($areas as $modules) {
+    foreach ($modules as $module) {
+      if (!$module["hidden"]) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
