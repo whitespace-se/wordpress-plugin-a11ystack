@@ -116,3 +116,41 @@ add_action("acf/init", function () {
     "graphql_field_name" => "eventProperties",
   ]);
 });
+
+function whitespace_a11ystack_get_event_dates($post_id) {
+  $occasions = get_field("event_occasions", $post_id);
+  $dates = [];
+  foreach ($occasions as $occasion) {
+    switch ($occasion["acf_fc_layout"]) {
+      case "event_occasion_single":
+        $start_date = strtotime($occasion["start_date"]);
+        $end_date = strtotime($occasion["end_date"]);
+        $date = $start_date;
+        while ($date < $end_date) {
+          $dates[] = $date;
+          $date = strtotime("+1 day", $date);
+        }
+        break;
+    }
+  }
+  return $dates;
+}
+
+/**
+ * Adds `eventDates` field to Event GraphQL type.
+ */
+add_action("graphql_register_types", function ($type_registry) {
+  $type_registry->register_field("Event", "eventDates", [
+    "type" => ["list_of" => "String"],
+    "description" => __("Dates for the event.", "whitespace-a11ystack"),
+    "resolve" => function ($source) {
+      $dates = whitespace_a11ystack_get_event_dates($source->ID);
+      $dates = array_map(function ($date) {
+        return date("Y-m-d", $date);
+      }, $dates);
+      $dates = array_unique($dates);
+      sort($dates);
+      return $dates;
+    },
+  ]);
+});
