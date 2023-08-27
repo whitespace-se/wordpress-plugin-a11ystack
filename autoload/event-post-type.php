@@ -56,17 +56,18 @@ add_action("acf/init", function () {
       [
         "key" => "field_event_occasions",
         "label" => __("Occasions", "whitespace-a11ystack"),
-        "name" => "occasions",
+        "name" => "event_occasions",
         "type" => "flexible_content",
         "layouts" => [
-          "layout_event_occation_single" => [
-            "key" => "layout_event_occation_single",
-            "name" => "event_occation_single",
+          "layout_event_occasion_single" => [
+            "key" => "layout_event_occasion_single",
+            "name" => "event_occasion_single",
             "label" => __("Single occasion", "whitespace-a11ystack"),
             "display" => "block",
+            "button_label" => __("Add occasion", "whitespace-a11ystack"),
             "sub_fields" => [
               [
-                "key" => "field_event_occation_single_start_date",
+                "key" => "field_event_occasion_single_start_date",
                 "label" => __("Start date", "whitespace-a11ystack"),
                 "name" => "start_date",
                 "type" => "date_time_picker",
@@ -74,9 +75,12 @@ add_action("acf/init", function () {
                 "display_format" => "Y-m-d H:i",
                 "return_format" => "Y-m-d H:i",
                 "first_day" => 1,
+                "wrapper" => [
+                  "width" => "50%",
+                ],
               ],
               [
-                "key" => "field_event_occation_single_end_date",
+                "key" => "field_event_occasion_single_end_date",
                 "label" => __("End date", "whitespace-a11ystack"),
                 "name" => "end_date",
                 "type" => "date_time_picker",
@@ -84,6 +88,9 @@ add_action("acf/init", function () {
                 "display_format" => "Y-m-d H:i",
                 "return_format" => "Y-m-d H:i",
                 "first_day" => 1,
+                "wrapper" => [
+                  "width" => "50%",
+                ],
               ],
             ],
           ],
