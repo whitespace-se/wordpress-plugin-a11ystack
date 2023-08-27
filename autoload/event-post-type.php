@@ -41,7 +41,7 @@ add_action("init", function () {
     "graphql_single_name" => "event",
     "graphql_plural_name" => "events",
     "menu_position" => null,
-    "supports" => ["title", "editor", "author", "revisions"],
+    "supports" => ["title", "editor", "author", "revisions", "thumbnail"],
     "optional_ui" => true,
   ];
 
