@@ -167,13 +167,17 @@ add_action("acf/save_post", function ($post_id) {
 /**
  * Update event post meta on event posts after midnight.
  */
-if (!wp_next_scheduled("whitespace_a11ystack_update_events_post_meta")) {
+add_action("init", function () {
+  if (wp_next_scheduled("whitespace_a11ystack_update_events_post_meta")) {
+    return;
+  }
   wp_schedule_event(
     strtotime("tomorrow midnight +3 hours"),
     "daily",
     "whitespace_a11ystack_update_events_post_meta",
   );
-}
+  do_action("whitespace_a11ystack_update_events_post_meta");
+});
 add_action("whitespace_a11ystack_update_events_post_meta", function () {
   $args = [
     "post_type" => "event",
