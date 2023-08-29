@@ -1,5 +1,8 @@
 <?php
 
+use WPGraphQL\Model\Post;
+use WPGraphQL\Data\Connection\PostObjectConnectionResolver;
+
 add_action("init", function () {
   $labels = [
     "name" => _x("Events", "Post Type General Name", "whitespace-a11ystack"),
@@ -119,6 +122,9 @@ add_action("acf/init", function () {
 
 function whitespace_a11ystack_get_event_dates($post_id) {
   $occasions = get_field("event_occasions", $post_id);
+  if (empty($occasions)) {
+    return [];
+  }
   $dates = [];
   foreach ($occasions as $occasion) {
     switch ($occasion["acf_fc_layout"]) {
@@ -135,6 +141,50 @@ function whitespace_a11ystack_get_event_dates($post_id) {
   }
   return $dates;
 }
+
+function whitespace_a11ystack_update_event_post_meta($post_id) {
+  $dates = whitespace_a11ystack_get_event_dates($post_id);
+  if (empty($dates)) {
+    delete_post_meta($post_id, "event_dates");
+    delete_post_meta($post_id, "next_event_date");
+  } else {
+    update_post_meta($post_id, "event_dates", $dates);
+    $upcoming_dates = array_filter($dates, function ($date) {
+      return $date >= strtotime("today");
+    });
+    if (empty($upcoming_dates)) {
+      delete_post_meta($post_id, "next_event_date");
+    } else {
+      update_post_meta($post_id, "next_event_date", reset($upcoming_dates));
+    }
+  }
+}
+
+add_action("acf/save_post", function ($post_id) {
+  whitespace_a11ystack_update_event_post_meta($post_id);
+});
+
+/**
+ * Update event post meta on event posts after midnight.
+ */
+if (!wp_next_scheduled("whitespace_a11ystack_update_events_post_meta")) {
+  wp_schedule_event(
+    strtotime("tomorrow midnight +3 hours"),
+    "daily",
+    "whitespace_a11ystack_update_events_post_meta",
+  );
+}
+add_action("whitespace_a11ystack_update_events_post_meta", function () {
+  $args = [
+    "post_type" => "event",
+    "posts_per_page" => -1,
+    // 'post_status' => 'publish',
+  ];
+  $posts = get_posts($args);
+  foreach ($posts as $post) {
+    whitespace_a11ystack_update_event_post_meta($post->ID);
+  }
+});
 
 /**
  * Adds `eventDates` field to Event GraphQL type.
@@ -154,3 +204,93 @@ add_action("graphql_register_types", function ($type_registry) {
     },
   ]);
 });
+
+/**
+ * Adds `eventDates` field to Event GraphQL type.
+ */
+add_action("graphql_register_types", function ($type_registry) {
+  $type_registry->register_field("Event", "nextEventDate", [
+    "type" => "String",
+    "description" => __(
+      "Next date for the event, updated by cron.",
+      "whitespace-a11ystack",
+    ),
+    "resolve" => function ($source) {
+      $date = get_post_meta($source->ID, "next_event_date", true);
+      if (empty($date)) {
+        return null;
+      }
+      return date("Y-m-d", $date);
+    },
+  ]);
+});
+
+add_filter(
+  "wp-graphql-extras/ContentNode/archiveDates/value",
+  function ($value, Post $post) {
+    if (get_post_type($post->ID) === "event") {
+      $event_dates = whitespace_a11ystack_get_event_dates($post->ID);
+      $event_dates = array_map(function ($event_date) {
+        return date("c", strtotime($event_date));
+      }, $event_dates);
+      $event_dates = array_unique($event_dates);
+      sort($event_dates);
+      $value = $event_dates;
+    }
+    return $value;
+  },
+  10,
+  2,
+);
+
+add_filter(
+  "wp-graphql-extras/ContentNode/archiveDatesGmt/value",
+  function ($value, Post $post) {
+    if (get_post_type($post->ID) === "event") {
+      $event_dates = whitespace_a11ystack_get_event_dates($post->ID);
+      $event_dates = array_map(function ($event_date) {
+        return gmdate("c", strtotime($event_date));
+      }, $event_dates);
+      $event_dates = array_unique($event_dates);
+      sort($event_dates);
+      $value = $event_dates;
+    }
+    return $value;
+  },
+  10,
+  2,
+);
+
+/**
+ * Sorts events by next event date and filters out events without next event date.
+ */
+add_filter(
+  "modularity_graphql/ModPosts/contentNodes/PostObjectConnectionResolver",
+  function (
+    PostObjectConnectionResolver $resolver,
+    $data_source,
+    $parent_post,
+    $root
+  ) {
+    if ($data_source != "posttype") {
+      return $resolver;
+    }
+
+    $post_type = get_field("posts_data_post_type", $root->ID, false);
+    if ($post_type != "event") {
+      return $resolver;
+    }
+
+    $resolver->set_query_arg("meta_key", "next_event_date");
+    $resolver->set_query_arg("meta_query", [
+      "key" => "next_event_date",
+      "compare" => "EXISTS",
+    ]);
+    $resolver->set_query_arg("orderby", "meta_value");
+    $resolver->set_query_arg("order", "ASC");
+
+    return $resolver;
+  },
+  10,
+  4,
+);
