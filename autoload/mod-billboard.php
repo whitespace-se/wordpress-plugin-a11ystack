@@ -131,24 +131,7 @@ add_action("acf/init", function () {
       ],
       "default_value" => "left",
     ],
-    [
-      "key" => "field_mod_billboard_links",
-      "label" => __("Buttons", "whitespace-a11ystack"),
-      "name" => "links",
-      "type" => "repeater",
-      "required" => 0,
-      "layout" => "table",
-      "button_label" => __("Add link", "whitespace-a11ystack"),
-      "sub_fields" => [
-        [
-          "key" => "field_mod_billboard_links_link",
-          "label" => __("Link", "whitespace-a11ystack"),
-          "name" => "link",
-          "type" => "link",
-          "required" => 1,
-        ],
-      ],
-    ],
+    whitespace_a11ystack_acf_links_field(),
   ];
   $fields = apply_filters(
     "whitespace_a11ystack_billboard_fields",

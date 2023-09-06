@@ -21,4 +21,9 @@ add_action("acf/init", function () {
       "name" => "theme",
     ]),
   );
+  acf_add_local_field(
+    whitespace_a11ystack_acf_links_field([
+      "parent" => "group_5891b49127038",
+    ]),
+  );
 });
