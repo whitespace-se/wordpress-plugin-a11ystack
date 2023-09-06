@@ -14,6 +14,17 @@ add_action(
 );
 
 add_action("acf/init", function () {
+  acf_add_local_field([
+    "parent" => "group_5891b49127038",
+    "key" => "field_mod_text_expandable",
+    "name" => "expandable",
+    "label" => __("Expandable", "whitespace-a11ystack"),
+    "type" => "true_false",
+    "wrapper" => [
+      "width" => "50",
+    ],
+    "default_value" => 0,
+  ]);
   acf_add_local_field(
     whitespace_a11ystack_color_field([
       "parent" => "group_5891b49127038",
