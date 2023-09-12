@@ -99,12 +99,12 @@ add_action("acf/init", function () {
           ],
         ],
       ],
-      [
-        "key" => "field_event_location",
-        "label" => __("Location", "whitespace-a11ystack"),
-        "name" => "location",
-        "type" => "google_map",
-      ],
+      // [
+      //   "key" => "field_event_location",
+      //   "label" => __("Location", "whitespace-a11ystack"),
+      //   "name" => "location",
+      //   "type" => "google_map",
+      // ],
     ],
     "location" => [
       [
