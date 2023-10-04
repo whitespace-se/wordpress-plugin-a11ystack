@@ -47,3 +47,34 @@ add_action("init", function () {
 
   register_post_type("alert", $args);
 });
+
+add_action("acf/init", function () {
+  acf_add_local_field_group([
+    "key" => "group_alert_settings",
+    "title" => __("Alert settings", "whitespace-a11ystack"),
+    "fields" => [
+      [
+        "key" => "field_alert_settings_read_more_page",
+        "label" => __("Read-more page", "whitespace-a11ystack"),
+        "name" => "read-more-page",
+        "type" => "link",
+        "instructions" => __(
+          "Use this setting to make a custom read-more button.",
+          "whitespace-a11ystack",
+        ),
+        "show_in_graphql" => 1,
+      ],
+    ],
+    "location" => [
+      [
+        [
+          "param" => "post_type",
+          "operator" => "==",
+          "value" => "alert",
+        ],
+      ],
+    ],
+    "show_in_graphql" => 1,
+    "graphql_field_name" => "alertSettings",
+  ]);
+});

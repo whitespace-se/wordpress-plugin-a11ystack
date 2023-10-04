@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Whitespace a11ystack integration 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wordpress-plugin-"
 "a11ystack\n"
-"POT-Creation-Date: 2023-08-11T14:32:05+00:00\n"
-"PO-Revision-Date: 2023-08-11 16:37+0200\n"
+"POT-Creation-Date: 2023-10-04T09:27:47+00:00\n"
+"PO-Revision-Date: 2023-10-04 11:29+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -67,62 +67,183 @@ msgstr ""
 "Om ingen bild anges används Utvald bild istället. När Utvald bild saknas "
 "används en fördefinierad bild."
 
-#: autoload/alert-post-type.php:8
+#: autoload/acf-prototypes.php:6
+msgid "Buttons"
+msgstr "Knappar"
+
+#: autoload/acf-prototypes.php:11
+msgid "Add link"
+msgstr "Lägg till länk"
+
+#: autoload/acf-prototypes.php:15 autoload/mod-posts.php:9
+msgid "Link"
+msgstr "Länk"
+
+#: autoload/alert-post-type.php:5
 msgctxt "Post Type General Name"
 msgid "Alerts"
 msgstr "Notiser"
 
-#: autoload/alert-post-type.php:9
+#: autoload/alert-post-type.php:6
 msgctxt "Post Type Singular Name"
 msgid "Alert"
 msgstr "Notis"
 
-#: autoload/alert-post-type.php:14 autoload/alert-post-type.php:15
-#: autoload/alert-post-type.php:27
+#: autoload/alert-post-type.php:11 autoload/alert-post-type.php:12
+#: autoload/alert-post-type.php:24
 msgid "Alerts"
 msgstr "Notiser"
 
-#: autoload/alert-post-type.php:16
+#: autoload/alert-post-type.php:13
 msgctxt "post type archive"
 msgid "Alerts"
 msgstr "Notiser"
 
-#: autoload/alert-post-type.php:17
+#: autoload/alert-post-type.php:14
 msgid "All alerts"
 msgstr "Alla notiser"
 
-#: autoload/alert-post-type.php:18
+#: autoload/alert-post-type.php:15
 msgid "Add new alert"
 msgstr "Lägg till en ny notis"
 
-#: autoload/alert-post-type.php:19
+#: autoload/alert-post-type.php:16 autoload/event-post-type.php:19
 msgid "Add new"
 msgstr "Lägg till ny"
 
-#: autoload/alert-post-type.php:20
+#: autoload/alert-post-type.php:17
 msgid "New alert"
 msgstr "Ny notis"
 
-#: autoload/alert-post-type.php:21
+#: autoload/alert-post-type.php:18
 msgid "Edit alert"
 msgstr "Redigera notis"
 
-#: autoload/alert-post-type.php:22
+#: autoload/alert-post-type.php:19
 msgid "Update alert"
 msgstr "Uppdatera notis"
 
-#: autoload/alert-post-type.php:23
+#: autoload/alert-post-type.php:20
 msgid "View alert"
 msgstr "Visa notis"
 
-#: autoload/alert-post-type.php:24
+#: autoload/alert-post-type.php:21
 msgid "View alerts"
 msgstr "Visa notiser"
 
-#: autoload/alert-post-type.php:37
+#: autoload/alert-post-type.php:34
 msgctxt "Post Type Slug"
 msgid "alerts"
 msgstr "notiser"
+
+#: autoload/alert-post-type.php:54
+msgid "Alert settings"
+msgstr "Inställningar för notis"
+
+#: autoload/alert-post-type.php:58
+msgid "Read-more page"
+msgstr "Sida med mer information"
+
+#: autoload/alert-post-type.php:61
+msgid "Use this setting to make a custom read-more button."
+msgstr "Använd den här inställningen för att ersätta standardknappen."
+
+#: autoload/content-node-graphql.php:11
+msgid "Whether the node has page content."
+msgstr ""
+
+#: autoload/content-node-graphql.php:29
+msgid "The manual excerpt of the post."
+msgstr ""
+
+#: autoload/content-node-graphql.php:36
+msgid "Format of the field output"
+msgstr ""
+
+#: autoload/event-post-type.php:8
+msgctxt "Post Type General Name"
+msgid "Events"
+msgstr ""
+
+#: autoload/event-post-type.php:9
+msgctxt "Post Type Singular Name"
+msgid "Event"
+msgstr ""
+
+#: autoload/event-post-type.php:14 autoload/event-post-type.php:15
+#: autoload/event-post-type.php:27
+msgid "Events"
+msgstr ""
+
+#: autoload/event-post-type.php:16
+msgctxt "post type archive"
+msgid "Events"
+msgstr ""
+
+#: autoload/event-post-type.php:17
+msgid "All events"
+msgstr ""
+
+#: autoload/event-post-type.php:18
+msgid "Add new event"
+msgstr ""
+
+#: autoload/event-post-type.php:20
+msgid "New event"
+msgstr ""
+
+#: autoload/event-post-type.php:21
+msgid "Edit event"
+msgstr ""
+
+#: autoload/event-post-type.php:22
+msgid "Update event"
+msgstr ""
+
+#: autoload/event-post-type.php:23
+msgid "View event"
+msgstr ""
+
+#: autoload/event-post-type.php:24
+msgid "View events"
+msgstr ""
+
+#: autoload/event-post-type.php:37
+msgctxt "Post Type Slug"
+msgid "events"
+msgstr ""
+
+#: autoload/event-post-type.php:57
+msgid "Event properties"
+msgstr ""
+
+#: autoload/event-post-type.php:61
+msgid "Occasions"
+msgstr ""
+
+#: autoload/event-post-type.php:68
+msgid "Single occasion"
+msgstr ""
+
+#: autoload/event-post-type.php:70
+msgid "Add occasion"
+msgstr ""
+
+#: autoload/event-post-type.php:74
+msgid "Start date"
+msgstr ""
+
+#: autoload/event-post-type.php:87
+msgid "End date"
+msgstr ""
+
+#: autoload/event-post-type.php:199
+msgid "Dates for the event."
+msgstr ""
+
+#: autoload/event-post-type.php:218
+msgid "Next date for the event, updated by cron."
+msgstr ""
 
 #: autoload/feedback-comment.php:34
 msgid "Content reaction"
@@ -180,25 +301,17 @@ msgstr "Vänster"
 msgid "Right"
 msgstr "Höger"
 
-#: autoload/mod-billboard.php:136
-msgid "Buttons"
-msgstr "Knappar"
-
-#: autoload/mod-billboard.php:141
-msgid "Add link"
-msgstr "Lägg till länk"
-
-#: autoload/mod-billboard.php:145 autoload/mod-posts.php:9
-msgid "Link"
-msgstr "Länk"
-
-#: autoload/mod-billboard.php:160 src/Modularity/ModBillboard.php:10
+#: autoload/mod-billboard.php:143 src/Modularity/ModBillboard.php:10
 msgid "Billboard"
 msgstr "Billboard"
 
 #: autoload/mod-posts.php:46
 msgid "Heading position"
 msgstr "Placering av rubrik"
+
+#: autoload/mod-text.php:21
+msgid "Expandable"
+msgstr ""
 
 #: autoload/taxonomy.php:73
 msgid "Taxonomy"
