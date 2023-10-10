@@ -84,7 +84,7 @@ add_action("acf/init", function () {
               "label" => __("End date", "whitespace-a11ystack"),
               "name" => "end_date",
               "type" => "date_time_picker",
-              "required" => 1,
+              "required" => 0,
               "display_format" => "Y-m-d H:i",
               "return_format" => "Y-m-d H:i",
               "first_day" => 1,
@@ -135,7 +135,7 @@ function whitespace_a11ystack_get_event_dates($post_id) {
     switch ($occasion["acf_fc_layout"]) {
       case "event_occasion_single":
         $start_date = strtotime($occasion["start_date"]);
-        $end_date = strtotime($occasion["end_date"]);
+        $end_date = strtotime($occasion["end_date"] ?: $occasion["start_date"]);
         $date = $start_date;
         while ($date < $end_date) {
           $dates[] = $date;
