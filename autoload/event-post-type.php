@@ -38,7 +38,7 @@ add_action("init", function () {
       "with_front" => false,
     ],
     "capability_type" => "post",
-    "has_archive" => false,
+    "has_archive" => true,
     "show_in_graphql" => true,
     "hierarchical" => false,
     "graphql_single_name" => "event",
@@ -52,60 +52,65 @@ add_action("init", function () {
 });
 
 add_action("acf/init", function () {
-  acf_add_local_field_group([
-    "key" => "group_event",
-    "title" => __("Event properties", "whitespace-a11ystack"),
-    "fields" => [
-      [
-        "key" => "field_event_occasions",
-        "label" => __("Occasions", "whitespace-a11ystack"),
-        "name" => "event_occasions",
-        "type" => "flexible_content",
-        "layouts" => [
-          "layout_event_occasion_single" => [
-            "key" => "layout_event_occasion_single",
-            "name" => "event_occasion_single",
-            "label" => __("Single occasion", "whitespace-a11ystack"),
-            "display" => "block",
-            "button_label" => __("Add occasion", "whitespace-a11ystack"),
-            "sub_fields" => [
-              [
-                "key" => "field_event_occasion_single_start_date",
-                "label" => __("Start date", "whitespace-a11ystack"),
-                "name" => "start_date",
-                "type" => "date_time_picker",
-                "required" => 1,
-                "display_format" => "Y-m-d H:i",
-                "return_format" => "Y-m-d H:i",
-                "first_day" => 1,
-                "wrapper" => [
-                  "width" => "50%",
-                ],
+  $fields = [
+    [
+      "key" => "field_event_occasions",
+      "label" => __("Occasions", "whitespace-a11ystack"),
+      "name" => "event_occasions",
+      "type" => "flexible_content",
+      "layouts" => [
+        "layout_event_occasion_single" => [
+          "key" => "layout_event_occasion_single",
+          "name" => "event_occasion_single",
+          "label" => __("Single occasion", "whitespace-a11ystack"),
+          "display" => "block",
+          "button_label" => __("Add occasion", "whitespace-a11ystack"),
+          "sub_fields" => [
+            [
+              "key" => "field_event_occasion_single_start_date",
+              "label" => __("Start date", "whitespace-a11ystack"),
+              "name" => "start_date",
+              "type" => "date_time_picker",
+              "required" => 1,
+              "display_format" => "Y-m-d H:i",
+              "return_format" => "Y-m-d H:i",
+              "first_day" => 1,
+              "wrapper" => [
+                "width" => "50%",
               ],
-              [
-                "key" => "field_event_occasion_single_end_date",
-                "label" => __("End date", "whitespace-a11ystack"),
-                "name" => "end_date",
-                "type" => "date_time_picker",
-                "required" => 1,
-                "display_format" => "Y-m-d H:i",
-                "return_format" => "Y-m-d H:i",
-                "first_day" => 1,
-                "wrapper" => [
-                  "width" => "50%",
-                ],
+            ],
+            [
+              "key" => "field_event_occasion_single_end_date",
+              "label" => __("End date", "whitespace-a11ystack"),
+              "name" => "end_date",
+              "type" => "date_time_picker",
+              "required" => 1,
+              "display_format" => "Y-m-d H:i",
+              "return_format" => "Y-m-d H:i",
+              "first_day" => 1,
+              "wrapper" => [
+                "width" => "50%",
               ],
             ],
           ],
         ],
       ],
-      // [
-      //   "key" => "field_event_location",
-      //   "label" => __("Location", "whitespace-a11ystack"),
-      //   "name" => "location",
-      //   "type" => "google_map",
-      // ],
     ],
+    [
+      "key" => "field_event_location",
+      "label" => __("Location", "whitespace-a11ystack"),
+      "name" => "event_location",
+      "type" => "textarea",
+      "rows" => 3,
+      "new_lines" => "br",
+      "graphql_field_name" => "location",
+    ],
+  ];
+  $fields = apply_filters("whitespace_a11ystack_event_fields", $fields);
+  acf_add_local_field_group([
+    "key" => "group_event",
+    "title" => __("Event properties", "whitespace-a11ystack"),
+    "fields" => $fields,
     "location" => [
       [
         [
