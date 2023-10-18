@@ -240,7 +240,7 @@ add_filter(
     if (get_post_type($post->ID) === "event") {
       $event_dates = whitespace_a11ystack_get_event_dates($post->ID);
       $event_dates = array_map(function ($event_date) {
-        return date("c", strtotime($event_date));
+        return date("Y-m-d\TH:i:s", $event_date);
       }, $event_dates);
       $event_dates = array_unique($event_dates);
       sort($event_dates);
@@ -258,7 +258,7 @@ add_filter(
     if (get_post_type($post->ID) === "event") {
       $event_dates = whitespace_a11ystack_get_event_dates($post->ID);
       $event_dates = array_map(function ($event_date) {
-        return gmdate("c", strtotime($event_date));
+        return gmdate("Y-m-d\TH:i:s", $event_date);
       }, $event_dates);
       $event_dates = array_unique($event_dates);
       sort($event_dates);
