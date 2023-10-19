@@ -137,10 +137,10 @@ function whitespace_a11ystack_get_event_dates($post_id) {
         $start_date = strtotime($occasion["start_date"]);
         $end_date = strtotime($occasion["end_date"] ?: $occasion["start_date"]);
         $date = $start_date;
-        while ($date < $end_date) {
+        do {
           $dates[] = $date;
           $date = strtotime("+1 day", $date);
-        }
+        } while ($date < $end_date);
         break;
     }
   }
