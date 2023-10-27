@@ -138,6 +138,12 @@ add_action("acf/init", function () {
     $fields,
     $formats,
   );
+  $fields = array_map(function ($field) {
+    return apply_filters(
+      "whitespace_a11ystack_billboard_fields/{$field["name"]}",
+      $field,
+    );
+  }, $fields);
   acf_add_local_field_group([
     "key" => "group_mod_billboard",
     "title" => __("Billboard", "whitespace-a11ystack"),
