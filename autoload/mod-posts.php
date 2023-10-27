@@ -31,6 +31,15 @@ add_action(
       "instructions" => "Only for <em>inline list</em> display mode.",
     ]);
 
+    // Manual input > Color
+    acf_add_local_field(
+      whitespace_a11ystack_color_field([
+        "parent" => "field_576258d3110b0",
+        "key" => "field_mod_posts_manual_input_color",
+        "name" => "color",
+      ]),
+    );
+
     // Manual input > Image
     acf_add_local_field([
       "key" => "field_mod_posts_manual_input_image",
