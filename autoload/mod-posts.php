@@ -40,14 +40,14 @@ add_action(
       ]),
     );
 
-    // Manual input > Image
-    acf_add_local_field([
-      "key" => "field_mod_posts_manual_input_image",
-      "label" => __("Image", "whitespace-a11ystack"),
-      "name" => "image",
-      "parent" => "field_576258d3110b0",
-      "type" => "image",
-    ]);
+    // // Manual input > Image
+    // acf_add_local_field([
+    //   "key" => "field_mod_posts_manual_input_image",
+    //   "label" => __("Image", "whitespace-a11ystack"),
+    //   "name" => "image",
+    //   "parent" => "field_576258d3110b0",
+    //   "type" => "image",
+    // ]);
 
     // Data Display > Heading position
     acf_add_local_field([
