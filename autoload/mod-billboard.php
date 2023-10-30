@@ -62,7 +62,7 @@ add_action("acf/init", function () {
         // Hide the field if there is only one choice
         "style" => count($colors) > 1 ? null : "display:none;",
       ],
-      "default_value" => count($colors) > 1 ? null : array_keys($colors)[0],
+      "default_value" => "transparent",
       // Show only for "card" format
       "conditional_logic" => [
         [
