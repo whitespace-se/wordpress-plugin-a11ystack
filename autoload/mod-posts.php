@@ -28,7 +28,6 @@ add_action(
         // Hide the field if there is only one choice
         "style" => !empty($icons) ? null : "display:none;",
       ],
-      "instructions" => "Only for <em>inline list</em> display mode.",
     ]);
 
     // Manual input > Color
